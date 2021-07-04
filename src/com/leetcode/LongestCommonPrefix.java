@@ -5,6 +5,19 @@ package com.leetcode;
 public class LongestCommonPrefix {
 
     public String longestCommonPrefix(final String[] strs) {
+        if (strs == null || strs.length == 0) return "";
+        String prefix = strs[0];
+        int count = 0;
+        while (count < strs.length) {
+            while (!strs[count].startsWith(prefix)) {
+                prefix = prefix.substring(0, prefix.length()-1);
+            }
+            count++;
+        }
+        return prefix;
+    }
+
+    public String longestCommonPrefixBeforeRefactoring(final String[] strs) {
         final int MAX_LENGTH = 200;
         final char[][] strChars = new char[MAX_LENGTH][MAX_LENGTH];
         final char[] longestCommonPrefix = new char[MAX_LENGTH];
