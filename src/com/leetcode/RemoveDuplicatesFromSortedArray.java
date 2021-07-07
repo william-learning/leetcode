@@ -5,14 +5,12 @@ package com.leetcode;
 public class RemoveDuplicatesFromSortedArray {
 
     public int removeDuplicates(int[] nums) {
-        int counter = 0;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != nums[counter]) {
-                nums[++counter] = nums[i];
+        int i = 0;
+        for (int n : nums) {
+            if (i == 0 || n != nums[i-1]) {
+                nums[i++] = n;
             }
         }
-
-        // Length is counter + 1
-        return counter + 1;
+        return i;
     }
 }
